@@ -2,7 +2,7 @@ import './styles.css'
 import Image from './react.png'
 import ImageTwo from './react-1.svg'
 export default function App() {
-  const nombre = "Okamoto"
+  const nombre = "Okamoto Rojas"
   return (
     <div>
       <h1>
