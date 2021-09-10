@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CopyPlugin = require('copy-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+// const CopyPlugin = require('copy-webpack-plugin')
 module.exports = {
   entry: path.resolve(__dirname, '..', './src/index.tsx'),
   resolve: {
@@ -34,9 +35,15 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '..', './src/index.html'),
+      inject: 'body',
+      minify: {
+        removeComments: true,
+        collapseWhitespace: false,
+      },
     }),
-    new CopyPlugin({
-      patterns: [{ from: 'src', to: 'build' }],
-    }),
+    new CleanWebpackPlugin(),
+    // new CopyPlugin({
+    //   patterns: [{ from: 'src', to: 'build' }],
+    // }),
   ],
 }
